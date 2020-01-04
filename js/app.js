@@ -38,18 +38,16 @@ function loadJson() {
 
 function loadText() {
   fetch("datos.txt")
-    .then(function(res) {
+    .then(res => {
       //return Resolve and promise
-      console.log(res);
       return res.text(); //methods in __proto__ text(), html(), json()... etc
     })
-    .then(function(data) {
+    .then(data => {
       //this then need for get data from promise
       //data from promise
-      console.log(data);
       document.getElementById("result").innerHTML = data;
     })
-    .catch(function(err) {
+    .catch(err => {
       //if fech fail
       console.error(err);
     });
