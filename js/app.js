@@ -12,9 +12,7 @@ const loadApiBtn = document
 //Loaders
 function loadApi() {
   fetch("https://picsum.photos/list")
-    .then(response => {
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
       showImages(data);
     })
@@ -25,9 +23,7 @@ function loadApi() {
 
 function loadJson() {
   fetch("empleados.json")
-    .then(res => {
-      return res.json();
-    })
+    .then(res => res.json())
     .then(data => {
       showJSON(data);
     })
@@ -38,10 +34,11 @@ function loadJson() {
 
 function loadText() {
   fetch("datos.txt")
-    .then(res => {
-      //return Resolve and promise
-      return res.text(); //methods in __proto__ text(), html(), json()... etc
-    })
+    .then(
+      res =>
+        //return Resolve and promise
+        res.text() //methods in __proto__ text(), html(), json()... etc
+    )
     .then(data => {
       //this then need for get data from promise
       //data from promise
