@@ -13,23 +13,15 @@ const loadApiBtn = document
 function loadApi() {
   fetch("https://picsum.photos/list")
     .then(response => response.json())
-    .then(data => {
-      showImages(data);
-    })
-    .catch(error => {
-      getError(error);
-    });
+    .then(data => showImages(data))
+    .catch(error => getError(error));
 }
 
 function loadJson() {
   fetch("empleados.json")
     .then(res => res.json())
-    .then(data => {
-      showJSON(data);
-    })
-    .catch(err => {
-      getError(err);
-    });
+    .then(data => showJSON(data))
+    .catch(err => getError(err));
 }
 
 function loadText() {
@@ -39,15 +31,16 @@ function loadText() {
         //return Resolve and promise
         res.text() //methods in __proto__ text(), html(), json()... etc
     )
-    .then(data => {
-      //this then need for get data from promise
-      //data from promise
-      document.getElementById("result").innerHTML = data;
-    })
-    .catch(err => {
+    .then(
+      data =>
+        //this then need for get data from promise
+        //data from promise
+        (document.getElementById("result").innerHTML = data)
+    )
+    .catch(err =>
       //if fech fail
-      console.error(err);
-    });
+      console.error(err)
+    );
 }
 
 //Helpers
