@@ -7,9 +7,22 @@ const loadJsonBtn = document
   .addEventListener("click", loadJson);
 const loadApiBtn = document
   .getElementById("loadApi")
-  .addEventListener("click", loadText);
+  .addEventListener("click", loadApi);
 
 //Loaders
+function loadApi() {
+  fetch("https://picsum.photos/list")
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      showImages(data);
+    })
+    .catch(error => {
+      getError(error);
+    });
+}
+
 function loadJson() {
   fetch("empleados.json")
     .then(res => {
@@ -43,6 +56,17 @@ function loadText() {
 }
 
 //Helpers
+
+function showImages(data) {
+  console.log(data);
+  let html = "";
+  data.forEach(image => {
+    console.log(image);
+
+    html += `<li>${image.author} <a href="${image.post_url}" alt="${image.filename}" target="_blank">${image.filename}</a></li>`;
+  });
+  document.getElementById("result").innerHTML = html;
+}
 
 function getError(err) {
   console.error(err);
